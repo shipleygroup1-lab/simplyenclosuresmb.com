@@ -121,7 +121,22 @@ footer a{color:#fff;text-decoration:none;font-weight:700}
   body{padding-bottom:54px}
   .benefits{grid-template-columns:1fr}
 }
+
+/* Scroll animations (see reveal.js) */
+.reveal-on [data-reveal]{opacity:0;transform:translateY(36px);transition:opacity .6s ease-out,transform .8s cubic-bezier(.34,1.45,.64,1);will-change:opacity,transform}
+.reveal-on [data-reveal="left"]{transform:translateX(-48px)}
+.reveal-on [data-reveal="right"]{transform:translateX(48px)}
+.reveal-on [data-reveal="zoom"]{transform:scale(.9)}
+.reveal-on [data-reveal].revealed{opacity:1;transform:none}
 </style>
+<script>
+  // Turn on scroll animations only if supported and the visitor allows motion.
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("reveal-on");
+    setTimeout(function () { if (!window.__revealReady) document.documentElement.classList.remove("reveal-on"); }, 3000);
+  }
+</script>
+<script src="reveal.js" defer></script>
 </head>
 <body>
 <header><div class="wrap"><nav>
@@ -136,83 +151,83 @@ footer a{color:#fff;text-decoration:none;font-weight:700}
 <section class="hero"><div class="wrap">
 <div class="hero-grid">
 <div>
-<div class="eyebrow">Grand Strand Screened-In Porch Specialist</div>
-<h1>More Outdoor Living for the Way You Live</h1>
-<p>Custom screened porches built for coastal living. More usable space, fewer bugs, and a finished look that fits your home.</p>
-<div class="actions"><a class="btn" href="book.html">Get a Free Estimate</a><a class="btn outline" href="tel:+18432742359">Call 843-274-2359</a></div>
-<div class="trust"><span>SC Licensed Contractor #63242</span><span>Free on-site estimates</span><span>Locally owned</span></div>
+<div class="eyebrow" data-reveal>Grand Strand Screened-In Porch Specialist</div>
+<h1 data-reveal>More Outdoor Living for the Way You Live</h1>
+<p data-reveal>Custom screened porches built for coastal living. More usable space, fewer bugs, and a finished look that fits your home.</p>
+<div class="actions" data-reveal><a class="btn" href="book.html">Get a Free Estimate</a><a class="btn outline" href="tel:+18432742359">Call 843-274-2359</a></div>
+<div class="trust" data-reveal><span>SC Licensed Contractor #63242</span><span>Free on-site estimates</span><span>Locally owned</span></div>
 </div>
-<div><img class="hero-photo" src="images/porch-white-evening.jpg" alt="Long white aluminum screened porch lit up at dusk" width="1400" height="1050"></div>
+<div data-reveal="right"><img class="hero-photo" src="images/porch-white-evening.jpg" alt="Long white aluminum screened porch lit up at dusk" width="1400" height="1050"></div>
 </div>
 <div class="benefits">
-<div class="benefit"><b>Custom Designs</b><span>Built to fit your home and lifestyle</span></div>
-<div class="benefit"><b>Quality Materials</b><span>Selected for coastal conditions</span></div>
-<div class="benefit"><b>Professional Installation</b><span>Done right, start to finish</span></div>
-<div class="benefit"><b>Local Service</b><span>Serving the Grand Strand</span></div>
+<div class="benefit" data-reveal><b>Custom Designs</b><span>Built to fit your home and lifestyle</span></div>
+<div class="benefit" data-reveal><b>Quality Materials</b><span>Selected for coastal conditions</span></div>
+<div class="benefit" data-reveal><b>Professional Installation</b><span>Done right, start to finish</span></div>
+<div class="benefit" data-reveal><b>Local Service</b><span>Serving the Grand Strand</span></div>
 </div></div></section>
 
 <section id="porches"><div class="wrap center">
-<div class="eyebrow">What We Build</div>
-<h2>Screened Porches Built for Coastal Living</h2>
-<p class="lead">We turn covered outdoor spaces into comfortable rooms for relaxing, dining and entertaining, with clean lines and solid aluminum framing.</p>
+<div class="eyebrow" data-reveal>What We Build</div>
+<h2 data-reveal>Screened Porches Built for Coastal Living</h2>
+<p class="lead" data-reveal>We turn covered outdoor spaces into comfortable rooms for relaxing, dining and entertaining, with clean lines and solid aluminum framing.</p>
 <div class="cards">
-<div class="card"><h3>Aluminum Extrusion Systems</h3><p>Clean, durable framing in white or bronze, configured to fit the openings and architecture of your porch.</p></div>
-<div class="card"><h3>Existing Porch Enclosures</h3><p>Turn an existing covered porch into a screened outdoor room while keeping it open, bright and connected to your home.</p></div>
-<div class="card"><h3>Designed Around Your Home</h3><p>We measure the space, go over layout and finish, and plan an enclosure that looks like it belongs, not added on as an afterthought.</p></div>
+<div class="card" data-reveal><h3>Aluminum Extrusion Systems</h3><p>Clean, durable framing in white or bronze, configured to fit the openings and architecture of your porch.</p></div>
+<div class="card" data-reveal><h3>Existing Porch Enclosures</h3><p>Turn an existing covered porch into a screened outdoor room while keeping it open, bright and connected to your home.</p></div>
+<div class="card" data-reveal><h3>Designed Around Your Home</h3><p>We measure the space, go over layout and finish, and plan an enclosure that looks like it belongs, not added on as an afterthought.</p></div>
 </div></div></section>
 
 <section id="gallery" class="soft"><div class="wrap center">
-<div class="eyebrow">Gallery</div>
-<h2>Recent Projects</h2>
-<p class="lead">Screened porches we've built on Grand Strand homes, in white and bronze aluminum framing.</p>
+<div class="eyebrow" data-reveal>Gallery</div>
+<h2 data-reveal>Recent Projects</h2>
+<p class="lead" data-reveal>Screened porches we've built on Grand Strand homes, in white and bronze aluminum framing.</p>
 <div class="gallery">
-<figure><img src="images/porch-bronze.jpg" alt="Bronze aluminum screened porch with outdoor seating" loading="lazy" width="1400" height="1050"><figcaption>Bronze aluminum framing • Corner patio enclosure</figcaption></figure>
-<figure><img src="images/porch-white-gray-home.jpg" alt="White aluminum screened porch with screen door on a gray two-story home" loading="lazy" width="1400" height="1050"><figcaption>White aluminum framing • Covered patio with screen door</figcaption></figure>
-<figure><img src="images/porch-white-patio.jpg" alt="White aluminum screened porch with dining area" loading="lazy" width="1400" height="1050"><figcaption>White aluminum framing • Screened dining patio</figcaption></figure>
-<figure><img src="images/porch-white-evening.jpg" alt="Long white aluminum screened porch with lighting at dusk" loading="lazy" width="1400" height="1050"><figcaption>White aluminum framing • Full-length back porch</figcaption></figure>
-<div class="next-tile"><h3>Picture your porch here.</h3><p>Send us a few photos of your space and we'll show you what a screened enclosure could look like on your home.</p><div><a class="btn" href="book.html">Get a Free Estimate</a></div></div>
+<figure data-reveal="zoom"><img src="images/porch-bronze.jpg" alt="Bronze aluminum screened porch with outdoor seating" loading="lazy" width="1400" height="1050"><figcaption>Bronze aluminum framing • Corner patio enclosure</figcaption></figure>
+<figure data-reveal="zoom"><img src="images/porch-white-gray-home.jpg" alt="White aluminum screened porch with screen door on a gray two-story home" loading="lazy" width="1400" height="1050"><figcaption>White aluminum framing • Covered patio with screen door</figcaption></figure>
+<figure data-reveal="zoom"><img src="images/porch-white-patio.jpg" alt="White aluminum screened porch with dining area" loading="lazy" width="1400" height="1050"><figcaption>White aluminum framing • Screened dining patio</figcaption></figure>
+<figure data-reveal="zoom"><img src="images/porch-white-evening.jpg" alt="Long white aluminum screened porch with lighting at dusk" loading="lazy" width="1400" height="1050"><figcaption>White aluminum framing • Full-length back porch</figcaption></figure>
+<div class="next-tile" data-reveal><h3>Picture your porch here.</h3><p>Send us a few photos of your space and we'll show you what a screened enclosure could look like on your home.</p><div><a class="btn" href="book.html">Get a Free Estimate</a></div></div>
 </div>
 </div></section>
 
 <section id="about"><div class="wrap split">
-<div><div class="eyebrow">About Simply Enclosures</div><h2>Focused on Better Outdoor Living</h2>
+<div data-reveal="left"><div class="eyebrow">About Simply Enclosures</div><h2>Focused on Better Outdoor Living</h2>
 <p>Simply Enclosures is a locally owned Grand Strand company focused on screened-in porches for coastal homes. Our owner has spent more than 20 years in the contracting trade and has completed hundreds of projects.</p>
 <p>The goal is simple: a clean, comfortable enclosure that fits the home and gives you more ways to use the outdoor space you already have.</p></div>
-<div class="card"><h3>What You Can Expect</h3><p>Free on-site estimates, clear communication, careful measuring and planning, and a finished enclosure designed around your home.</p><p><strong>SC Specialty Contractor License #63242</strong></p></div>
+<div class="card" data-reveal="right"><h3>What You Can Expect</h3><p>Free on-site estimates, clear communication, careful measuring and planning, and a finished enclosure designed around your home.</p><p><strong>SC Specialty Contractor License #63242</strong></p></div>
 </div></section>
 
 <section id="process" class="soft"><div class="wrap center">
-<div class="eyebrow">Our Process</div>
-<h2>Simple From Start to Finish</h2><p class="lead">Clear steps and straight answers, from the first conversation to the finished enclosure.</p>
+<div class="eyebrow" data-reveal>Our Process</div>
+<h2 data-reveal>Simple From Start to Finish</h2><p class="lead" data-reveal>Clear steps and straight answers, from the first conversation to the finished enclosure.</p>
 <div class="steps">
-<div class="step"><h3>Request an Estimate</h3><p>Book online or call. Tell us about your porch and what you want from the space.</p></div>
-<div class="step"><h3>Measure &amp; Plan</h3><p>We visit, measure the openings, go over framing color and layout, and give you a clear price.</p></div>
-<div class="step"><h3>Installation &amp; Walkthrough</h3><p>We install the enclosure and walk through the finished space with you.</p></div>
+<div class="step" data-reveal><h3>Request an Estimate</h3><p>Book online or call. Tell us about your porch and what you want from the space.</p></div>
+<div class="step" data-reveal><h3>Measure &amp; Plan</h3><p>We visit, measure the openings, go over framing color and layout, and give you a clear price.</p></div>
+<div class="step" data-reveal><h3>Installation &amp; Walkthrough</h3><p>We install the enclosure and walk through the finished space with you.</p></div>
 </div></div></section>
 
 <section id="faq"><div class="wrap center">
-<div class="eyebrow">FAQ</div>
-<h2>Common Questions</h2>
-<p class="lead">Quick answers to what homeowners ask us most.</p>
+<div class="eyebrow" data-reveal>FAQ</div>
+<h2 data-reveal>Common Questions</h2>
+<p class="lead" data-reveal>Quick answers to what homeowners ask us most.</p>
 <div class="faq">
-<details><summary>Is the estimate really free?</summary><p>Yes. We come out, measure the space, talk through your options and give you a clear price. No cost and no obligation.</p></details>
-<details><summary>Can you screen in a porch I already have?</summary><p>Yes. Most of our work is enclosing existing covered porches and patios. We fit the framing to your openings so it looks built-in.</p></details>
-<details><summary>What colors does the framing come in?</summary><p>White and bronze aluminum. We'll help you pick the one that best matches your trim, windows and roofline.</p></details>
-<details><summary>Are you licensed?</summary><p>Yes. Simply Enclosures work is performed under South Carolina Specialty Contractor License #63242.</p></details>
-<details><summary>How long does a project take?</summary><p>It depends on the size and layout of the porch. You'll get a timeline along with your estimate so you know what to expect.</p></details>
-<details><summary>What areas do you serve?</summary><p>Myrtle Beach and the Grand Strand, including North Myrtle Beach, Surfside Beach, Garden City, Murrells Inlet, Pawleys Island and Conway.</p></details>
+<details data-reveal><summary>Is the estimate really free?</summary><p>Yes. We come out, measure the space, talk through your options and give you a clear price. No cost and no obligation.</p></details>
+<details data-reveal><summary>Can you screen in a porch I already have?</summary><p>Yes. Most of our work is enclosing existing covered porches and patios. We fit the framing to your openings so it looks built-in.</p></details>
+<details data-reveal><summary>What colors does the framing come in?</summary><p>White and bronze aluminum. We'll help you pick the one that best matches your trim, windows and roofline.</p></details>
+<details data-reveal><summary>Are you licensed?</summary><p>Yes. Simply Enclosures work is performed under South Carolina Specialty Contractor License #63242.</p></details>
+<details data-reveal><summary>How long does a project take?</summary><p>It depends on the size and layout of the porch. You'll get a timeline along with your estimate so you know what to expect.</p></details>
+<details data-reveal><summary>What areas do you serve?</summary><p>Myrtle Beach and the Grand Strand, including North Myrtle Beach, Surfside Beach, Garden City, Murrells Inlet, Pawleys Island and Conway.</p></details>
 </div></div></section>
 
 <section id="service-area" class="area"><div class="wrap center">
-<div class="eyebrow" style="color:#7fd3f5">Service Area</div>
-<h2>Serving the Grand Strand</h2>
-<p class="lead">Screened porches for homeowners throughout Horry and Georgetown counties.</p>
-<div class="towns"><span>Myrtle Beach</span><span>North Myrtle Beach</span><span>Surfside Beach</span><span>Garden City</span><span>Murrells Inlet</span><span>Pawleys Island</span><span>Conway</span><span>Nearby communities</span></div>
+<div class="eyebrow" data-reveal style="color:#7fd3f5">Service Area</div>
+<h2 data-reveal>Serving the Grand Strand</h2>
+<p class="lead" data-reveal>Screened porches for homeowners throughout Horry and Georgetown counties.</p>
+<div class="towns"><span data-reveal="zoom">Myrtle Beach</span><span data-reveal="zoom">North Myrtle Beach</span><span data-reveal="zoom">Surfside Beach</span><span data-reveal="zoom">Garden City</span><span data-reveal="zoom">Murrells Inlet</span><span data-reveal="zoom">Pawleys Island</span><span data-reveal="zoom">Conway</span><span data-reveal="zoom">Nearby communities</span></div>
 </div></section>
 
 <section id="contact"><div class="wrap contact">
-<div><div class="eyebrow">Free Estimate</div><h2>Ready to Enjoy Your Porch More?</h2><p>Tell us a little about your project and we'll follow up to schedule a time to look at the space and go over your options.</p><div class="actions"><a class="btn" href="book.html">Book Your Free Estimate</a></div></div>
-<div class="contactbox"><h3>Simply Enclosures</h3>
+<div data-reveal="left"><div class="eyebrow">Free Estimate</div><h2>Ready to Enjoy Your Porch More?</h2><p>Tell us a little about your project and we'll follow up to schedule a time to look at the space and go over your options.</p><div class="actions"><a class="btn" href="book.html">Book Your Free Estimate</a></div></div>
+<div class="contactbox" data-reveal="right"><h3>Simply Enclosures</h3>
 <a class="big-phone" href="tel:+18432742359">843-274-2359</a>
 <p><strong>Email:</strong> <a href="mailto:info@simplyenclosuresmb.com">info@simplyenclosuresmb.com</a></p>
 <p><strong>Service Area:</strong> Myrtle Beach &amp; the Grand Strand</p>

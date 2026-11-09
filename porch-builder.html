@@ -157,6 +157,8 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
         <div class="opts">
           <label><input type="radio" name="frame" value="white" checked><span><i class="sw" style="background:#F7F9FA"></i>White</span></label>
           <label><input type="radio" name="frame" value="bronze"><span><i class="sw" style="background:#4B3527"></i>Bronze</span></label>
+          <label><input type="radio" name="frame" value="black"><span><i class="sw" style="background:#22272B"></i>Black</span></label>
+          <label><input type="radio" name="frame" value="beige"><span><i class="sw" style="background:#D9CBB0"></i>Beige</span></label>
         </div>
       </fieldset>
 
@@ -256,7 +258,7 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
 <script>
 (function(){
   var S={w:16,d:12,h:8,frame:'white',door:'front-center',rail:true,lower:'pet',upper:'standard',roof:'existing',roofStyle:'shed',floor:'slab',view:'3d'};
-  var FR={white:{fill:'#F7F9FA',edge:'#7F96A6'},bronze:{fill:'#4B3527',edge:'#24170F'}};
+  var FR={white:{fill:'#F7F9FA',edge:'#7F96A6',roof:'#F3F6F8',name:'white'},bronze:{fill:'#4B3527',edge:'#24170F',roof:'#5A4232',name:'bronze'},black:{fill:'#22272B',edge:'#0B0D0F',roof:'#30363B',name:'black'},beige:{fill:'#D9CBB0',edge:'#9C8A6A',roof:'#E4D9C3',name:'beige'}};
   var RAIL=3, DOOR_W=3, DOOR_H=6.67;
   var svg=document.getElementById('draw');
   var items;
@@ -325,7 +327,7 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
     wall(function(s,z){return iso(s,D,z)},W,doorSpot('front'));
     // roof
     var rise=1.4, oh=.9, zf=H-rise*oh/D;
-    var roofFill=S.roof==='new'?(S.frame==='white'?'#F3F6F8':'#5A4232'):'#9DB0BE', roofEdge=S.roof==='new'?FR[S.frame].edge:'#7E93A3';
+    var roofFill=S.roof==='new'?FR[S.frame].roof:'#9DB0BE', roofEdge=S.roof==='new'?FR[S.frame].edge:'#7E93A3';
     if(S.roofStyle==='gable'){
       // gable: ridge runs out from the house at mid-width, peaked end faces the yard
       var gr=gableRise(), ov=.7, f=FR[S.frame], up=meshFor('upper');
@@ -340,9 +342,9 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
       text(iso(W/2,D/2,H+gr+.6),S.roof==='new'?'NEW GABLE ROOF':'YOUR GABLE ROOF','','middle');
     } else if(S.roof==='new'){
       var rf=FR[S.frame];
-      poly([iso(-.6,0,H+rise),iso(W+.6,0,H+rise),iso(W+.6,D+oh,zf),iso(-.6,D+oh,zf)],S.frame==='white'?'#F3F6F8':'#5A4232',rf.edge,1,.97);
+      poly([iso(-.6,0,H+rise),iso(W+.6,0,H+rise),iso(W+.6,D+oh,zf),iso(-.6,D+oh,zf)],FR[S.frame].roof,rf.edge,1,.97);
       for(var rx=4;rx<W;rx+=4) line(iso(rx,0,H+rise),iso(rx,D+oh,zf),rf.edge,.6);
-      poly([iso(-.6,D+oh,zf),iso(W+.6,D+oh,zf),iso(W+.6,D+oh,zf-.35),iso(-.6,D+oh,zf-.35)],shade(S.frame==='white'?'#F3F6F8':'#5A4232',-25),'none');
+      poly([iso(-.6,D+oh,zf),iso(W+.6,D+oh,zf),iso(W+.6,D+oh,zf-.35),iso(-.6,D+oh,zf-.35)],shade(FR[S.frame].roof,-25),'none');
       text(iso(W/2,D/2,H+rise/2+.2),'NEW ROOF','', 'middle');
     } else {
       poly([iso(-.6,0,H+rise),iso(W+.6,0,H+rise),iso(W+.6,D+oh,zf),iso(-.6,D+oh,zf)],'#9DB0BE','#7E93A3',1,.92);
@@ -357,7 +359,7 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
     var W=S.w,H=S.h; function P(s,z){return [s,-z]}
     poly([P(-1.5,0),P(W+1.5,0),P(W+1.5,H+2.6),P(-1.5,H+2.6)],'#E4ECF1','#B5C5D0',1);
     for(var z=.8;z<H+2.6;z+=.8) line(P(-1.5,z),P(W+1.5,z),'#D2DEE6',.7);
-    var rfill=S.roof==='new'?(S.frame==='white'?'#F3F6F8':'#5A4232'):'#9DB0BE';
+    var rfill=S.roof==='new'?FR[S.frame].roof:'#9DB0BE';
     if(S.roofStyle==='gable'){
       var gr=gableRise(), f=FR[S.frame];
       poly([P(-1.2,H-.3),P(W/2,H+gr+.45),P(W+1.2,H-.3),P(W+1.2,H+.2),P(W/2,H+gr+.95),P(-1.2,H+.2)],rfill,'#7E93A3',1);
@@ -444,7 +446,7 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
   function rows(){
     return [
       ['Size',S.w+' ft wide × '+S.d+' ft deep × '+S.h+' ft high'],
-      ['Frame','Aluminum, '+(S.frame==='white'?'white':'bronze')],
+      ['Frame','Aluminum, '+FR[S.frame].name],
       ['Screen door',DOORS[S.door]],
       ['Chair rail',S.rail?'Yes, about 36" up':'No, floor-to-ceiling screen'],
       ['Below the rail',S.rail?LOWER[S.lower]:'n/a'],

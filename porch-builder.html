@@ -240,6 +240,7 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
           <select id="r-town" name="town"><option>Myrtle Beach</option><option>North Myrtle Beach</option><option>Surfside Beach</option><option>Garden City</option><option>Murrells Inlet</option><option>Pawleys Island</option><option>Conway</option><option>Somewhere else nearby</option></select></label>
         </div>
         <label for="r-notes">Anything else? (optional)<textarea id="r-notes" name="notes"></textarea></label>
+        <input type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button type="submit">Send my design</button>
         <p class="msg" id="rmsg" aria-live="polite"></p>
       </form>
@@ -495,10 +496,11 @@ footer{border-top:1px solid var(--line);padding-block:1.5rem;display:flex;justif
     var v=function(n){return (f.elements[n].value||'').trim()};
     var missing=[['first_name','first name'],['last_name','last name'],['phone','phone'],['email','email'],['street','street address'],['zip','zip']].filter(function(x){return !v(x[0])}).map(function(x){return x[1]});
     if(missing.length){m.textContent='Please add your '+missing.join(', ')+'.';return}
+    if(f.elements.company_site && f.elements.company_site.value){m.textContent='Thanks!';return} // hidden trap field: only bots fill it
     if(!/^\S+@\S+\.\S+$/.test(v('email'))){m.textContent='That email doesn\'t look right. Please check it.';return}
     var r=rows(), get=function(k){for(var i=0;i<r.length;i++)if(r[i][0]===k)return r[i][1];return ''};
     var design='Porch builder design: '+r.map(function(x){return x[0]+': '+x[1]}).join(' | ')+(v('notes')?' | Customer notes: '+v('notes'):'');
-    var data=new URLSearchParams({first_name:v('first_name'),last_name:v('last_name'),phone:v('phone'),email:v('email'),street:v('street'),town:f.elements.town.value,state:'SC',zip:v('zip'),
+    var data=new URLSearchParams({src:'se-porch-builder-v1',first_name:v('first_name'),last_name:v('last_name'),phone:v('phone'),email:v('email'),street:v('street'),town:f.elements.town.value,state:'SC',zip:v('zip'),
       size:get('Size'),frame:get('Frame'),door:get('Screen door'),chair_rail:get('Chair rail'),below_rail:get('Below the rail'),main_screen:get('Main screen'),roof:get('Roof')+' - '+get('Roof shape'),floor:get('Floor'),notes:v('notes'),design:design});
     btn.disabled=true;m.textContent='Sending your design…';
     fetch(HOOK,{method:'POST',mode:'no-cors',body:data}).then(function(){

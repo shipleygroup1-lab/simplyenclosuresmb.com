@@ -1,0 +1,185 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>Porch Quote Builder | Simply Enclosures</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one phone-first column of job-sheet panels; live total pinned at the bottom */
+:root{
+  --bg:#eef2f2; --panel:#ffffff; --ink:#15262b; --muted:#5b6d72; --rule:#cfd9da;
+  --accent:#0e6b74; --accent-ink:#ffffff; --screen:#2b3a3f; --warn:#b4541a; --ok:#2e7d4f;
+  --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1a1c;--panel:#16252a;--ink:#e6eeef;--muted:#9db0b4;--rule:#2b3f44;--accent:#3fb3bd;--accent-ink:#06282c;--screen:#c9d6d8;--warn:#f0a06b;--ok:#6fcf97;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a1c;--panel:#16252a;--ink:#e6eeef;--muted:#9db0b4;--rule:#2b3f44;--accent:#3fb3bd;--accent-ink:#06282c;--screen:#c9d6d8;--warn:#f0a06b;--ok:#6fcf97;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 140px}
+.wrap{max-width:720px;margin:0 auto;display:grid;gap:14px}
+header h1{font-family:var(--display);font-size:2rem;line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
+header p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:14px;display:grid;gap:10px;min-width:0}
+.panel h2{font-family:var(--display);font-size:1.25rem;margin:0;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+label{display:grid;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:8px;padding:10px;width:100%;text-transform:none;letter-spacing:0}
+input:focus,select:focus,textarea:focus,button:focus{outline:3px solid var(--accent);outline-offset:1px}
+.check{display:flex;align-items:center;gap:8px;text-transform:none;font-size:.95rem;color:var(--ink);font-weight:500;letter-spacing:0}
+.check input{width:22px;height:22px}
+.lines{display:grid;gap:4px;font-variant-numeric:tabular-nums}
+.line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--rule);padding:4px 0}
+.line.total{border-bottom:0;font-weight:700;font-size:1.1rem}
+.note{font-size:.85rem;color:var(--muted)}
+.warn{color:var(--warn);font-weight:600}
+.ok{color:var(--ok);font-weight:600}
+svg text{font-family:var(--body);fill:var(--ink)}
+.drawing{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;background:var(--bg)}
+button{font:inherit;font-weight:700;border:0;border-radius:8px;padding:12px 14px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--rule);border-radius:8px;padding:10px;font-size:.88rem;margin:0;max-height:260px;overflow:auto}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--rule);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
+.bar .in{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.big{font-family:var(--display);font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.small{font-size:.8rem;color:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0}[hidden]{display:none!important}</style></head><body>
+
+<div class="wrap">
+<header>
+  <h1>Porch Quote Builder</h1>
+  <p>Simply Enclosures · on-site screened porch quote, drawing, rendering prompt and proposal text. Example job filled in; replace with your measurements.</p>
+</header>
+
+<section class="panel" aria-labelledby="h-cust">
+  <h2 id="h-cust">Customer</h2>
+  <div class="row">
+    <label for="cName">Name<input id="cName" value="Example Customer"></label>
+    <label for="cAddr">Address<input id="cAddr" value="123 Example Dr, Myrtle Beach SC"></label>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="h-meas">
+  <h2 id="h-meas">Measure (feet, screened openings)</h2>
+  <div class="row">
+    <label for="left">Left side<input id="left" type="number" inputmode="decimal" min="0" step="0.5" value="6"></label>
+    <label for="front">Front<input id="front" type="number" inputmode="decimal" min="0" step="0.5" value="13"></label>
+    <label for="right">Right side<input id="right" type="number" inputmode="decimal" min="0" step="0.5" value="6"></label>
+  </div>
+  <div class="row">
+    <label for="doors">Screen doors<input id="doors" type="number" inputmode="numeric" min="0" step="1" value="1"></label>
+    <label for="doorWall">Door on<select id="doorWall"><option value="front">Front</option><option value="left">Left side</option><option value="right">Right side</option></select></label>
+    <label for="height">Height floor to beam (ft)<input id="height" type="number" inputmode="decimal" min="0" step="0.5" value="8"></label>
+  </div>
+  <div class="row">
+    <label for="color">Frame color<select id="color"><option>White</option><option>Bronze</option><option>Black</option><option>Beige</option></select></label>
+    <label for="screen">Screen<select id="screen"><option value="std">Standard 18x14 charcoal</option><option value="spec">Specialty (no-see-um, pet, solar)</option></select></label>
+  </div>
+  <p class="note">Total screened length: <b id="lfOut">25 LF</b></p>
+</section>
+
+<section class="panel" aria-labelledby="h-opt">
+  <h2 id="h-opt">Options</h2>
+  <label class="check" for="kick"><input id="kick" type="checkbox"> Kick panels on all walls ($43/LF)</label>
+  <label class="check" for="gutter"><input id="gutter" type="checkbox"> Gutter relocation at the fascia ($470)</label>
+  <label class="check" for="roof"><input id="roof" type="checkbox"> New Elite panel roof (starts at $10,000)</label>
+  <label for="roofPrice" id="roofPriceWrap" hidden>Roof price<input id="roofPrice" type="number" inputmode="numeric" min="10000" step="100" value="10000"></label>
+</section>
+
+<section class="panel" aria-labelledby="h-price">
+  <h2 id="h-price">Price</h2>
+  <div class="row">
+    <label for="disc">Discount % (you can give up to 5%)<input id="disc" type="number" inputmode="decimal" min="0" max="5" step="0.5" value="0"></label>
+    <label for="dep">Deposit<select id="dep"><option value="half">50% deposit, 50% at completion</option><option value="thirds">Thirds: deposit, mid-job, completion</option></select></label>
+  </div>
+  <p class="note" id="discNote"></p>
+  <div class="lines" id="lines"></div>
+</section>
+
+<section class="panel" aria-labelledby="h-draw">
+  <h2 id="h-draw">Drawing</h2>
+  <div class="drawing"><svg id="svg" viewBox="0 0 520 330" width="100%" role="img" aria-label="Plan view of the screened porch"></svg></div>
+  <p class="note">Plan view, not to scale. Posts placed at 6 ft max on center. Conceptual, not engineered.</p>
+</section>
+
+<section class="panel" aria-labelledby="h-rend">
+  <h2 id="h-rend">Rendering (ChatGPT)</h2>
+  <p class="note">1. Take one photo of the porch from a front corner, at an angle. 2. In ChatGPT attach that photo. 3. Copy and paste this prompt.</p>
+  <pre id="prompt"></pre>
+  <button id="copyPrompt" type="button">Copy rendering prompt</button>
+</section>
+
+<section class="panel" aria-labelledby="h-prop">
+  <h2 id="h-prop">Proposal text (DripJobs)</h2>
+  <p class="note">Open the Screen Porch proposal template in DripJobs, paste this into the line item description, set the price to the total, attach the COI, send it while you're with the customer, and collect the deposit.</p>
+  <pre id="prop"></pre>
+  <button id="copyProp" type="button">Copy proposal text</button>
+</section>
+
+</div>
+
+<div class="bar" role="status" aria-live="polite"><div class="in">
+  <div><div class="small">Total</div><div class="big" id="barTotal">$0</div></div>
+  <div style="text-align:right"><div class="small">Deposit today</div><div class="big" id="barDep">$0</div></div>
+</div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const P={lf:125, specUp:0.10, door:530, kick:43, gutter:470, maxDisc:5};
+const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+function num(id){const v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0}
+function posts(len){return len>0?Math.ceil(len/6)+1:0}
+function calc(){
+  const L=num('left'),F=num('front'),R=num('right'),D=Math.round(num('doors'));
+  const lf=L+F+R, spec=$('screen').value==='spec';
+  const rate=spec?P.lf*(1+P.specUp):P.lf;
+  const items=[];
+  items.push([`Screened enclosure, ${lf} LF @ ${money(rate)}/LF${spec?' (specialty screen)':''}`, lf*rate]);
+  if(D) items.push([`Screen door${D>1?'s':''} x ${D} @ ${money(P.door)}`, D*P.door]);
+  if($('kick').checked) items.push([`Kick panels, ${lf} LF @ ${money(P.kick)}/LF`, lf*P.kick]);
+  if($('gutter').checked) items.push(['Gutter relocation at the fascia', P.gutter]);
+  const roof=$('roof').checked; $('roofPriceWrap').hidden=!roof;
+  if(roof) items.push(['Elite panel roof', Math.max(10000,num('roofPrice'))]);
+  const list=items.reduce((a,b)=>a+b[1],0);
+  let d=parseFloat($('disc').value)||0; let over=d>P.maxDisc; if(d<0)d=0; const dUse=Math.min(d,P.maxDisc);
+  const total=Math.round(list*(1-dUse/100));
+  const floor=Math.round(list*(1-P.maxDisc/100));
+  $('discNote').innerHTML=over?`<span class="warn">Over 5% needs Tom's OK by text. Capped at 5% here.</span>`:`Lowest you can go on your own: <b>${money(floor)}</b>.`;
+  const thirds=$('dep').value==='thirds';
+  const dep=thirds?Math.round(total/3):Math.round(total/2);
+  let h=items.map(i=>`<div class="line"><span>${i[0]}</span><span>${money(i[1])}</span></div>`).join('');
+  if(dUse) h+=`<div class="line"><span>Discount ${dUse}%</span><span>-${money(list-total)}</span></div>`;
+  h+=`<div class="line total"><span>Total</span><span>${money(total)}</span></div>`;
+  h+=thirds?`<div class="line"><span>Deposit / mid-job / completion</span><span>${money(dep)} / ${money(dep)} / ${money(total-2*dep)}</span></div>`:`<div class="line"><span>Deposit 50% / at completion</span><span>${money(dep)} / ${money(total-dep)}</span></div>`;
+  $('lines').innerHTML=h; $('barTotal').textContent=money(total); $('barDep').textContent=money(dep);
+  $('lfOut').textContent=lf+' LF';
+  draw(L,F,R,D);
+  const color=$('color').value, scr=spec?'specialty':'standard 18x14 charcoal fiberglass';
+  $('prompt').textContent=`Edit this photo of the porch. Keep the house, roof, floor, yard, camera angle and lighting exactly the same. Add a screened porch enclosure in the existing porch openings: ${color.toLowerCase()} powder-coated aluminum 2x2 framing with a chair rail about 36 inches high, vertical posts about every 6 feet, ${scr} screen in every opening${D?`, and ${D} matching ${color.toLowerCase()} aluminum screen door${D>1?'s':''} on the ${$('doorWall').value==='front'?'front':$('doorWall').value+' side'}`:''}${$('kick').checked?', with solid kick panels below the chair rail':''}${roof?', and a new insulated aluminum panel roof over the porch':''}. Clean, straight, professional install. Photorealistic. No other changes.`;
+  $('prop').textContent=`Screened Porch Enclosure${roof?' with Elite Panel Roof':''}\nCustomer: ${$('cName').value} · ${$('cAddr').value}\n\nScope of work:\n- Screen in ${lf} linear feet of porch openings (left ${L} ft, front ${F} ft, right ${R} ft), about ${num('height')} ft floor to beam.\n- ${color} powder-coated aluminum framing: receiving channel base, 1x2 uprights, 1x2 top plate at the beam, 2x2 chair rail; posts about every 6 ft.\n- ${spec?'Specialty':'Standard 18x14 charcoal fiberglass'} screen, rolled in with spline and trimmed tight.\n${D?`- ${D} ${color.toLowerCase()} aluminum screen door${D>1?'s':''} with closer, on the ${$('doorWall').value} wall.\n`:''}${$('kick').checked?'- Solid aluminum kick panels below the chair rail on all walls.\n':''}${$('gutter').checked?'- Relocate the gutter at the fascia as needed for the enclosure.\n':''}${roof?'- New Elite insulated aluminum panel roof over the porch.\n':''}- Sealant at the base and attachment points, site cleanup, customer walk-through and sign-off.\n\nTotal: ${money(total)}${dUse?` (includes ${dUse}% discount)`:''}\nPayments: ${thirds?`${money(dep)} deposit, ${money(dep)} mid-job, ${money(total-2*dep)} at completion`:`${money(dep)} deposit (50%), ${money(total-dep)} at completion`}\n1-year workmanship warranty. Simply Crafted Construction LLC dba Simply Enclosures, SC Lic. RBS 63242.`;
+}
+function draw(L,F,R,D){
+  const W=520,H=330,pad=60,maxW=W-2*pad,maxD=H-130;
+  const s=Math.min(maxW/Math.max(F,1),maxD/Math.max(L,R,1),24);
+  const fw=F*s, x0=(W-fw)/2, y0=60, ld=L*s, rd=R*s, depth=Math.max(ld,rd);
+  let g=`<rect x="20" y="20" width="${W-40}" height="40" fill="var(--rule)"/><text x="${W/2}" y="45" text-anchor="middle" font-size="13">HOUSE</text>`;
+  const seg=(x1,y1,x2,y2,len)=>{let t=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="var(--screen)" stroke-width="5"/>`;const n=posts(len);for(let i=0;i<n;i++){const f=n>1?i/(n-1):0;t+=`<rect x="${x1+(x2-x1)*f-4}" y="${y1+(y2-y1)*f-4}" width="8" height="8" fill="var(--accent)"/>`;}return t};
+  const fy=y0+depth;
+  if(L) g+=seg(x0,y0,x0,y0+ld,L)+`<text x="${x0-10}" y="${y0+ld/2}" text-anchor="end" font-size="13">${L} ft</text>`;
+  if(R) g+=seg(x0+fw,y0,x0+fw,y0+rd,R)+`<text x="${x0+fw+10}" y="${y0+rd/2}" font-size="13">${R} ft</text>`;
+  if(F) g+=seg(x0,fy,x0+fw,fy,F)+`<text x="${x0+fw/2}" y="${fy+26}" text-anchor="middle" font-size="13">${F} ft</text>`;
+  if(D){const w=$('doorWall').value, dl=3*s; let dx,dy,vert=false;
+    if(w==='front'){dx=x0+fw/2-dl/2;dy=fy}else if(w==='left'){dx=x0;dy=y0+ld/2-dl/2;vert=true}else{dx=x0+fw;dy=y0+rd/2-dl/2;vert=true}
+    g+=vert?`<line x1="${dx}" y1="${dy}" x2="${dx}" y2="${dy+dl}" stroke="var(--warn)" stroke-width="7"/>`:`<line x1="${dx}" y1="${dy}" x2="${dx+dl}" y2="${dy}" stroke="var(--warn)" stroke-width="7"/>`;
+    g+=`<text x="${W-30}" y="${H-12}" text-anchor="end" font-size="12" fill="var(--warn)">Door: ${D} x 36" on ${w}</text>`;}
+  g+=`<text x="30" y="${H-12}" font-size="12">Total ${L+F+R} LF · posts 6 ft max O.C.</text>`;
+  $('svg').innerHTML=g;
+}
+function copy(id,btn){const t=$(id).textContent;const done=()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent=btn.dataset.l,1500)};
+  try{navigator.clipboard.writeText(t).then(done,()=>sel(id))}catch(e){sel(id)}}
+function sel(id){const r=document.createRange();r.selectNodeContents($(id));const s=getSelection();s.removeAllRanges();s.addRange(r)}
+['copyPrompt','copyProp'].forEach(b=>{$(b).dataset.l=$(b).textContent});
+$('copyPrompt').onclick=e=>copy('prompt',e.target); $('copyProp').onclick=e=>copy('prop',e.target);
+document.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',calc));
+function route(){calc()}
+addEventListener('hashchange',route); route();
+</script>
+
+</body></html>
